@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+Lineas
+{% endblock %}
+{% block menuopciones %}
+{% include 'lineas/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h2 class="text-center">Mis Lineas</h2>
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover">
+            <thead>
+            <tr>
+                <th width="30px">#</th>
+                <th class="text-center">Linea</th>
+                <th width="25%"></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for linea in lineas %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>Linea: {{ linea.nombre|upper }}</td>
+                        <td>
+                            <a href="{% url 'lineas.views.add_point_subida' linea.id %}" class="btn btn-warning btn-xs">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Agregar Ruta Subida
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'lineas.views.add_point_bajada' linea.id %}" class="btn btn-info btn-xs">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Agregar Ruta Bajada
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

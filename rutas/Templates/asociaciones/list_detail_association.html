@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+Asociaciones
+{% endblock %}
+{% block menuopciones %}
+{% include 'asociaciones/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h2>Asociaciones</h2>
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th width="20px">#</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Telefono/Celular</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in associations %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ a.nombre }}</td>
+                        <td>{{ a.direccion }}</td>
+                        <td>{{ a.telefono }}</td>
+                        <td>
+                            <a href="" class="btn btn-warning btn-xs mapa" id="{{ a.id }}" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                <i class="glyphicon glyphicon-map-marker"></i>  Ver Ubicación
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+</div>
+<script>
+    $(document).ready(function(){
+        $("a.mapa").click(function(){
+            var id = $(this).attr('id');
+            $.ajax({
+                data:{'id': id},
+                url:"{% url 'asociaciones.views.mapa_association_ajax' %}",
+                type:'GET',
+                success: function(data){
+                    $('#myModal').html(data);
+                },
+                failure: function(data){
+                    console.log('error')
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

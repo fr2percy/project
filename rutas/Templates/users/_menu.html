@@ -1,0 +1,11 @@
+<div class="list-group">
+    <a href="{% url 'users.views.privado' %}" class="list-group-item active text-center">{{ user.username|upper }}</a>
+    {% if user.first_name == "" %}
+        <a href="{% url 'users.views.edit_perfil' %}" class="list-group-item"><i class="glyphicon glyphicon-plus"></i> Completar Perfil</a>
+    {% else %}
+        <a href="{% url 'users.views.edit_perfil' %}" class="list-group-item"><i class="glyphicon glyphicon-plus"></i> Editar Perfil</a>
+    {% endif %}
+
+    <a href="{% url 'users.views.cambiar_password' %}" class="list-group-item"><i class="glyphicon glyphicon-edit"> </i> Cambiar Contraseña</a>
+    <a href="{% url 'users.views.cerrar_sesion' %}" class="list-group-item border-color-red"><i class="glyphicon glyphicon-registration-mark"></i> Cerrar Sesión </a>
+</div>

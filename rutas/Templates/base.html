@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>{% block title %}
+    Rutas
+	{% endblock %}</title>
+    {% block base_js %}
+
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'teme/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'teme/bootswatch.min.css' %}">
+    <link rel="stylesheet" href="{% static 'teme/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/degradados.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/estiloss.css' %}"/>
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+      <script src="../bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	{% include '_menu.html' %}
+    <br/>
+	<div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row">
+                    <div data-alert class="alert alert-dismissable alert-{{ message.tags }}">
+                        <p class="margin0 fi">
+                            {{ message|safe }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+		<div class="row ">
+			<div class="col-md-12">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-7">
+                                {% block menuopciones %}
+                                    {% include '_menuizq.html' %}
+                                {% endblock %}
+                            </div>
+                            <div class="col-md-9 height-slider ">
+                                {% block cuerpo %}
+                                     <h1 class="">Este es el cuerpo hiiih</h1>
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+       {% block bienvenida %}
+                    <!-- div class="row ">
+                        <div class="col-md-12 bg-deg-red contenido">
+                            <div class="row">
+                                 <div class="col-md-12 border-radius1 bg-deg-black">
+                                    <div class="row">
+                                        <div class="col-md-12 bg-deg-red border-radius-anterior ">
+
+                                            <div class="row t-color-white">
+                                                <div class="col-md-12 bg-black15 border-botton   border-radius">
+                                                    <h1 class="modal-title bg-none border-botton-red text-primary text-center t-color-yellow padding10">BIENVENIDOS A NUESTRA PAGINA</h1>
+                                                    <p class="t-align-just padding10lados20 ">Trafico y Vialidad siempre al servicio de su pueblo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aliquid culpa cum delectus deserunt distinctio eligendi ex ipsa ipsam laboriosam libero nihil nisi officiis perferendis placeat quaerat quam sed veniam?
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores ea, eligendi eos fugiat illum iste magni natus officia porro possimus, provident quae qui quibusdam reiciendis soluta sunt veritatis voluptas!</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div -->
+        {% endblock bienvenida %}
+        <div class="row">
+            <div class=" navbar navbar-default navbar-fixed-bottom bg-cls-black2 ">
+                <div class="container">
+                    <div class=" shadow-white bg-cls-black">
+                        <h1 class="h1-color">Rutas.com</h1>
+                        <p> RonFer Copyright &copy; Rutas.com 2014</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+	</div>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootswatch.js' %}"></script>
+</body>
+</html>

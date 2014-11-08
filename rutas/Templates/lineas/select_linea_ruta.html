@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Lineas
+{% endblock %}
+{% block menuopciones %}
+{% include 'lineas/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h2 class="text-center">Mis Lineas</h2>
+    <div class="col-md-12">
+        <table class="table table-responsive table-bordered table-hover">
+            <thead>
+            <tr>
+                <th width="30px">#</th>
+                <th class="text-center">Linea</th>
+                <th width="25%"></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for linea in lineas %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ linea.nombre }}</td>
+                        <td>
+                            <a href="{% url 'lineas.views.ver_ruta_linea' linea.id %}" class="fg-color-blue">
+                                <span class="glyphicon glyphicon-map-marker"></span> Ver Ruta
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

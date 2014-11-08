@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ user.username|upper }} | Index
+{% endblock %}
+{% block menuopciones %}
+{% include 'users/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+    <h2>Bienvenido <strong>{{ user.username|upper }}</strong></h2>
+{% endblock %}

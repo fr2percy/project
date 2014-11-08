@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+Mi Asociacion | {{ user.asociacion.nombre|upper }}
+{% endblock %}
+{% block menuopciones %}
+{% include 'asociaciones/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2 class="panel-title lead">Mi Asociación <strong>{{ asociacion.nombre|upper }}</strong></h2>
+    </div>
+    <div class="panel-body">
+        <p class="">
+            <strong>Dirección: </strong>{{ asociacion.direccion }}
+        </p>
+        <p class="">
+            <strong>Telefono: </strong>{{ asociacion.telefono }}
+        </p>
+        <p class="">
+            <strong>Correo Electronico: </strong>{{ asociacion.email }}
+        </p>
+        <p>
+            <a href="" class="btn btn-info mapa" data-toggle="modal" data-target=".bs-example-modal-lg">
+                <i class="glyphicon glyphicon-map-marker"></i>  Mi Ubicación
+            </a>
+        </p>
+    </div>
+</div>
+<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+</div>
+<script>
+    $(document).ready(function(){
+        $("a.mapa").click(function(){
+            var id = {{ asociacion.id }};
+            $.ajax({
+                data:{'id': id},
+                url:"{% url 'asociaciones.views.mapa_association_ajax' %}",
+                type:'GET',
+                success: function(data){
+                    $('#myModal').html(data);
+                },
+                failure: function(data){
+                    console.log('error')
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

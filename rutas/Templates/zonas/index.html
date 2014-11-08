@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Zonas
+{% endblock %}
+{% block menuopciones %}
+{% include 'zonas/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h2>Zonas</h2>
+    {% for zona in zonas %}
+        <dl class="dl-horizontal">
+            <dt>
+                <p><strong>Zona</strong></p>
+                {{ zona.nombre|upper }}
+            </dt>
+            <dd>
+                <h4>Calles Dentro de la Zona</h4>
+                {% for c in zona.calle_set.select_related %}
+                    <p>{{ c.nombre }}</p>
+                {% empty %}
+                    <p class="fg-color-orange">No Tiene Calles ni Avenidas Registradas</p>
+                {% endfor %}
+
+            </dd>
+        </dl>
+    {% endfor %}
+
+</div>
+{% endblock %}

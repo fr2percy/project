@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Asociaciones
+{% endblock %}
+{% block menuopciones %}
+{% include 'asociaciones/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h2>Asociaciones</h2>
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th width="20px">#</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Telefono/Celular</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in associations %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ a.nombre }}</td>
+                        <td>{{ a.direccion }}</td>
+                        <td>{{ a.telefono }}</td>
+                        <td>
+                            <a href="{% url 'asociaciones.views.update_association' a.id %}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit"></i>  Modificar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

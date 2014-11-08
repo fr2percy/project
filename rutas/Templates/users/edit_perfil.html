@@ -1,0 +1,16 @@
+{# encoding:utf-8 #}
+{% extends 'form.html' %}
+{% block title %}Editar Perfil{% endblock%}
+{% block menuopciones %}
+{% include 'users/_menu.html' %}
+{% endblock %}
+{% block legend %}
+    {% if user.first_name == "" %}
+        Completar Perfil
+    {% else %}
+        Editar Perfil
+    {% endif %}
+{% endblock %}
+{% block submit %}
+Modificar
+{% endblock %}

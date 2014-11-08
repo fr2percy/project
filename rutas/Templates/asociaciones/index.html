@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Asociaciones
+{% endblock %}
+{% block menuopciones %}
+{% include 'asociaciones/_menu.html' %}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h2>Asociaciones</h2>
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Telefono/Celular</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in asociaciones %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ a.nombre }}</td>
+                        <td>{{ a.direccion }}</td>
+                        <td>{{ a.telefono }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

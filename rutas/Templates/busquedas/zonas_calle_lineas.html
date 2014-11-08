@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+Lineas En la Calle {{ calle.nombre|upper }}
+{% endblock %}
+{% block cuerpo %}
+<div class="row">
+    <h3>Lineas Con Ruta Por La Calle: <strong>{{ calle.nombre|upper }}</strong></h3>
+    <div class="col-md-12">
+        <div class="row">
+            {% for linea in lineas %}
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            <strong>Linea: {{ linea.nombre|upper }}</strong>
+                        </div>
+                        <div class="panel-body">
+                            <p>Rutas</p>
+                            {% for p in linea.posicion_set.select_related.all %}
+                                {% if p.inicio == True and p.bajada == True %}
+                                    <a href="{% url 'users.views.ver_ruta_linea_tramo' linea.id 0 %}" class="btn btn-warning btn-sm">
+                                        <i class="glyphicon glyphicon-map-marker"></i>  De Bajada
+                                    </a>
+                                {% endif %}
+                                {% if p.inicio == True and p.subida == True %}
+                                    <a href="{% url 'users.views.ver_ruta_linea_tramo' linea.id 1 %}" class="btn btn-info btn-sm">
+                                        <i class="glyphicon glyphicon-map-marker"></i>  De Subida
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

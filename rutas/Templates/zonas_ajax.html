@@ -1,0 +1,49 @@
+<div class="panel panel-info">
+    {% for z in zonas %}
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a id="{{ z.id }}" href="#collapse{{ z.id }}" data-toggle="collapse" data-parent="#accordion" class="ajax" >
+                    {{ z.nombre }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{ z.id }}" class="panel-collapse collapse in">
+
+        </div>
+
+        <script>
+            $( document ).ready(function() {
+                var id = "#{{ z.id }}";
+                var cont = 1;
+                $(id).click(function(){
+                    var a = $(this);                                          
+                    cont++;
+                    var divid = "#collapse{{ z.id }}";
+                    var div = $(divid);
+                    if(cont%2 == 0){
+                        $.ajax({
+                            data:{'nombre': "{{ z.nombre }}"},
+                            url:"{% url 'users.views.buscar_calle_ajax' %}",
+                            type: "GET",
+                            success: function(data){
+                                div.html(data);
+                            },
+                            failure: function(data){
+                                console.log('error');
+                            }
+                        });
+                    }
+                    else{
+                        div.html('');
+                    }
+
+                });
+            });
+        </script>
+    {% endfor %}
+</div>
+<script>
+    $(document).ready(function(){
+        $('.collapse').collapse();
+    });
+</script>

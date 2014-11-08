@@ -1,0 +1,29 @@
+{% extends 'form.html' %}
+{% block title %}
+Nueva Asociacion
+{% endblock %}
+{% block menuopciones %}
+{% include 'asociaciones/_menu.html' %}
+{% endblock %}
+{% block legend %}
+Registrar Asociación
+{% endblock %}
+{% block cuerpo_formulario %}
+{% for field in formulario %}
+    {% if field.errors %}
+        <div class="alert alert-dismissable alert-danger">
+          {{ field.errors }}
+        </div>
+    {% endif %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        <div class="col-lg-9">
+            {{ field }}
+        </div>
+        {% if field.help_text %}
+            <p class="text-muted">{{ field.help_text }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+    {{ formulario.media }}
+{% endblock %}

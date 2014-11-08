@@ -1,0 +1,93 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Linea: {{ linea.nombre }} <strong>Ruta: {{ tramo }} </strong></h4>
+        </div>
+        <div class="modal-body">
+            <div class="" id="map_canvas"></div>
+        </div>
+    </div>
+</div>
+
+<!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script-->
+<script type="text/javascript">
+    var map = null;
+    var geocoder = null;
+    var marker = null;
+    var makerdgg = null;
+    var directionsDisplay;
+    var directionsService;
+
+    $(document).ready(function(){
+        initialize();
+        calcRoute();
+        $("#ver").click(function(){
+            calcRoute();
+            return false;
+        });
+    });
+    function initialize(){
+        directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+
+        geocoder = new google.maps.Geocoder();
+        var latLng = new google.maps.LatLng(-19.5722805,-65.75500629999999);
+        var myOptions = {
+            center: latLng,//centro del mapa
+            zoom: 15,//zoom del mapa
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        /*{% for p in posiciones %}
+            latlong = new google.maps.LatLng({{ p.latitud }}, {{ p.longitud }});
+            marker = new google.maps.Marker({
+                map: map,
+                position: latlong
+            });
+        {% endfor %}*/
+        directionsDisplay.setMap(map);
+    }
+    function calcRoute() {
+        //alert("entra");
+        {% for p in posiciones %}
+            {% if p.inicio == True %}
+                var start = new google.maps.LatLng({{ p.latitud }}, {{ p.longitud }});
+            {% endif %}
+            {% if p.fin == True %}
+                var end = new google.maps.LatLng({{ p.latitud }}, {{ p.longitud }});
+            {% endif %}
+        {% endfor %}
+        var waypts = [];
+        {% for p in posiciones1 %}
+            var lad = {{ p.latitud }};
+            var longi = {{ p.longitud }};
+            waypts.push({
+                location:new google.maps.LatLng(lad, longi),
+                stopover:true});
+        {% endfor %}
+        var request = {
+                origin: start,
+                destination: end,
+                waypoints: waypts,
+                //optimizeWaypoints: true,
+                travelMode: google.maps.TravelMode.WALKING
+            };
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                var route = response.routes[0];
+                var summaryPanel = document.getElementById('directions_panel');
+                summaryPanel.innerHTML = '';
+                // For each route, display summary information.
+                for (var i = 0; i < route.legs.length; i++) {
+                    var routeSegment = i + 1;
+                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment + '</b><br>';
+                    summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                }
+            }
+        });
+    }
+</script>

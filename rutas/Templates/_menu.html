@@ -1,0 +1,48 @@
+<div class="navbar navbar-default navbar-fixed-top bg-cls-black1 ">
+    <div class="container ">
+        <div class="navbar-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'users.views.privado' %}" class="navbar-brand logo"><span class="glyphicon glyphicon-home logo-icono"></span>
+                    {{ user.username|upper }} | Rutas
+                </a>
+            {% else %}
+                <a href="/" class="navbar-brand logo"><span class="glyphicon glyphicon-home logo-icono"></span>
+                    Rutas
+                </a>
+            {% endif %}
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main ">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav ">
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'asociaciones.views.index_asociacion' %}">Asociaciones</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'lineas.views.mis_lineas' %}">Lineas</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'lineas.views.index_zona' %}">Zonas</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form navbar-left">
+                    <input type="text" class="form-control col-lg-8" placeholder="Buscar">
+                </form>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'users.views.cerrar_sesion' %}" class="fg-color-yellow">Cerrar Sesion</a>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'users.views.iniciar_sesion' %}" class="fg-color-orange">Iniciar Sesion</a></li>
+                    <li><a href="{% url 'users.views.new_user' %}">Registrate</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

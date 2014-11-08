@@ -1,0 +1,26 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Asociación <strong>{{ association|upper }}</strong></h4>
+        </div>
+        <div class="modal-body">
+            <p id="mapa" class="text-center"></p>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    mostrar_mapa();
+});
+function mostrar_mapa() {
+    var latitud = "{{ association.position.latitude }}";//-19.5750574; //position.coords.latitude;
+    var longitud = "{{ association.position.longitude }}";//-65.77187359999999; //position.coords.longitude;
+    var image_url = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" + latitud + "," +
+    longitud + "&zoom=16&size=500x500&markers=color:red|label:P|" +
+    latitud + ',' + longitud;
+    $('#mapa').append(
+    $(document.createElement("img")).attr("src", image_url).attr('id','map').attr('class', 'span3 polaroid bd-white shadow')
+    );
+}
+</script>

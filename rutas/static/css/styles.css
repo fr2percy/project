@@ -1,0 +1,173 @@
+.footer{
+    border: 1px solid white;
+}
+.body{
+    background: red;
+}
+.color-font{
+    color: #008ea2;
+}
+/*=======SHADOWS========*/
+.shadow{
+    border: 1px solid black;
+    box-shadow: 0 0 10px black;
+    position: relative;
+}
+
+/*=========HEIGHT=========*/
+.height-footer {
+    height: 40px;
+}
+.h1-color{
+    color: rgba(111, 111, 111, 0.64);
+    font-size: 35px;
+    font-weight: bolder;
+    padding: 20px;
+}
+/*==========COLORS===========*/
+.bg-cls-black{
+    background: #0F1314;
+}
+.bg-cls-black2{
+    background: #0f0f0f;
+}
+.bg-cls-black1{
+    background: #212121;
+    box-shadow: 0 0 10px #0000a1;
+}
+.border-bottom{
+    border-bottom: 3px solid #ff6215;
+}
+.border-top-orange{
+    border-top: 3px solid #ff6215;
+}
+.logo{
+    font-size: 24px;
+    color: #ffd410 !important;
+    font-family:"SD Grunge Serifia" ;
+    font-style: oblique;
+}
+.logo-icono{
+    color: #2f8fff !important;
+
+}
+.shadow-white{
+    position: relative;
+    float: left;
+    box-shadow: 1px 0px 1px #fff inset, 0 0 400px rgba(8, 8, 8, 0.90) inset,0 0 800px rgba(14, 15, 15, 0.40),4px 0 40px rgba(155, 155, 155, 0.4) inset;
+    width: 100%;
+}
+.shadow-white:before, .shadow-white:after{
+    content: "";
+    position: absolute;
+    z-index: -2;
+    width: 124px;
+    top: 49px;
+    height: 40px;
+    position: absolute;
+}
+.shadow-white:before{
+    left: -32px;
+    box-shadow: 0 15px 8px rgba(0, 0, 0, 1),-4px 15px 8px black, 0 0 140px rgb(57, 48, 51), 0 0 80px #e93f07, 0 0 130px #aeaeae;
+    -webkit-transform: rotate(86deg);
+    -moz-transform: rotate(86deg);
+    -ms-transform: rotate(86deg);
+    -o-transform: rotate(86deg);
+    transform: rotate(86deg);
+}
+.shadow-white:after{
+    right: -32px;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 1),4px 15px 8px black, 0 0 140px rgb(57, 48, 51), 0 0 80px #e93f07, 0 0 130px #aeaeae;
+    -webkit-transform: rotate(-85deg);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    transform: rotate(-85deg);
+}
+
+/*======THE MENU'S COLOR LEFT=====*/
+.iz-me-bg-skyblue{
+    background: #ea2718 !important; /* Old browsers */
+   /* IE9 SVG, needs conditional override of 'filter' to 'none'*/
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VhNDQyZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ3JSIgc3RvcC1jb2xvcj0iI2ZmNDEzMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2ZmNDEzMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(top,  #ea442e 0%, #ff4130 47%, #ff4130 75%);  /*FF3.6+*/
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea442e), color-stop(47%,#ff4130), color-stop(75%,#ff4130)); /* Chrome,Safari4+*/
+    background: -webkit-linear-gradient(top,  #ea442e 0%,#ff4130 47%,#ff4130 75%); /* Chrome10+,Safari5.1+*/
+    background: -o-linear-gradient(top,  #ea442e 0%,#ff4130 47%,#ff4130 75%); /* Opera 11.10+*/
+    background: -ms-linear-gradient(top,  #ea442e 0%,#ff4130 47%,#ff4130 75%); /* IE10+*/
+    background: linear-gradient(to bottom,  #ea442e 0%,#ff4130 47%,#ff4130 75%); /* W3C*/
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea442e', endColorstr='#ff4130',GradientType=0 ); /* IE6-8 */
+
+    color: white !important;
+    border-top: 1px solid transparent;
+    border-bottom:0px solid transparent;
+    border-radius: 5px 5px 0 0  !important; ;
+}
+.contenido{
+    z-index: 10000 !important;
+}
+.padding10lados20{
+    padding: 15px 30px;
+}
+.t-align-just{
+    text-align: justify;
+}
+.t-color-yellow{
+    color: #eac245 !important;
+    font-family:"SD Grunge Serifia" ;
+}
+.t-color-skyblue {
+    color: #428bca !important;
+    font-family: "SD Grunge Serifia";
+}
+.bg-none{
+    background: none;
+}
+.bg-black{
+    background: black;
+}
+.bg-black15{
+    background: #151515 !important;
+}
+.bg-black2b{
+    background: #2b2b2b;
+}
+.bg-red{
+    background: red;
+}
+.bg-orangered{
+    background: orangered;
+}
+.border-botton-red{
+    border-bottom: 3px solid red;
+    border-radius:0 0 400px 0 / 0 0 100px   0   ;
+}
+.padding10{
+    padding:8px 20px;
+}
+.border-botton{
+    border-bottom: 3px solid black;
+}
+.border-radius{
+    border-radius:40px 0  300px/200px 0;
+
+}
+.t-color-white{
+    color: white !important;
+}
+.border-radius-anterior{
+    border-radius: 600px/450px 0 480px 0;
+}
+.border-radius1{
+    border-radius:280px/900px 0 1300px 0;
+}
+.height-slider{
+    height:auto;
+}
+.margin-center{
+    text-align: center !important;
+    font-weight: bolder;
+    font-size: 28px;
+}
+/*==========FORMS============*/
+
